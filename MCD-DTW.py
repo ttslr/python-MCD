@@ -22,8 +22,7 @@ def readmgc(filename):
     frames *= pysptk.blackman(frame_length)
 
     assert frames.shape[1] == frame_length 
-    #print('frames:', frames)
-
+ 
     # Order of mel-cepstrum
     order = 25
     alpha = 0.41
@@ -64,31 +63,13 @@ for wavID in indexfile:
      
     mgc2 = readmgc(filename2)
     print("mgc2 is ok!")
-
-
-    #print("filename1::",filename1)
-    #print("filename2::",filename2)
-
-
-    #f1 = open(filename1, "rb")
-    #feature1 = np.fromfile(f1, dtype=np.float64)
-    #f1.close()
-
-    #f2 = open(filename2, "rb")
-    #feature2 = np.fromfile(f2, dtype=np.float64)
-    #f2.close()
-
-    #x = np.reshape(feature1, (-1, 40))
-    #y = np.reshape(feature2, (-1, 40))
-    #print("x::",x.shape)
-    #print("y::",y.shape)
-
+ 
     x = mgc1
     y = mgc2
 
 
     distance, path = fastdtw(x, y, dist=euclidean)
-    #dist, path = fastdtw(x, y, radius=self.radius, dist=self.dist)
+ 
     distance/= (len(x) + len(y))
     pathx = list(map(lambda l: l[0], path))
     pathy = list(map(lambda l: l[1], path))
