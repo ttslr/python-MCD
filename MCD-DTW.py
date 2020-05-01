@@ -16,7 +16,7 @@ def readmgc(filename):
     hop_length = 256  # 80
 
     # Note that almost all of pysptk functions assume input array is C-contiguous and np.float64 element type
-    frames = librosa.util.frame(x, frame_length=frame_length, hop_length=hop_length).astype(np.float64).T
+    #frames = librosa.util.frame(x, frame_length=frame_length, hop_length=hop_length).astype(np.float64).T
 
     # Windowing
     frames *= pysptk.blackman(frame_length)
